@@ -12,3 +12,18 @@ List the key features of your project, such as:
 1. Web-based control interface  
 2. Multi-directional mobility using Mecanum wheels   
 3. Smooth movement in tight spaces
+
+## Contributing and Merging Changes
+## Contributing
+1. Fork the repository: Click the "Fork" button on the top right corner of this repository to create a copy of it in your GitHub account.
+2. Clone the repository: Clone the forked repository to your local machine using the git clone command.
+3. Create new branch and make changes
+4. Commit your changes: Commit your changes with a clear and descriptive commit message.
+5. push to your forked repo using command git push
+6. create a pull request: Go to the original repository on GitHub and click the "New Pull Request" button. Provide a clear title and description for your pull request, explaining the changes you made.
+
+##Merging Changes
+1. Review: We will review your pull request and provide feedback if needed.
+2. Collaboration: If there are any changes or improvements required, we'll work together to ensure the code meets the project's standards.
+3. Merge: Once your pull request is approved, it will be merged into the main branch of this repository, and your changes will become part of the project.
+
