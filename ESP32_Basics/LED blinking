@@ -1,5 +1,5 @@
 void setup() {
-// 2nd port for inbuilt led
+// pin 2 of ESP is for inbuilt led
   pinMode(2, OUTPUT);
 }
 
