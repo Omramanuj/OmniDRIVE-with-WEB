@@ -1,0 +1,68 @@
+#define  LED 5
+const int diwaliLightPins[] = {4, 3, 2, 6};
+#define ir 12
+
+void setup() {
+  pinMode(LED,OUTPUT);
+  for (int i = 0; i < 5; i++) {
+    pinMode(diwaliLightPins[i], OUTPUT);
+  }
+  pinMode(ir, INPUT);
+  Serial.begin(9600);
+}
+
+void loop() {
+  // TASK-1 : TURN ON AND OFF WITH SPECIFIC DELAY
+  for ( int i=0;i<=3;i++){
+      Serial.println("executing TASK-1 : blinking LED ");
+      digitalWrite(LED, HIGH); // Turn bulb ON
+      delay(500); // Delay 1 second
+      digitalWrite(LED, LOW); // Turn bulb OFF
+      delay(500); 
+  }
+
+  // TASK - 2 : INcREASE AND THEN DECREASE INTENSITY 
+  for ( int i=0;i<=3;i++){
+      for (int i=0;i<=255;i+=10){
+        analogWrite(LED,i);
+        Serial.print("brightness:");
+        Serial.println(i);
+        delay(100); }
+        delay(1000);
+        for (int i=255;i>=0;i-=10){
+        analogWrite(LED,i);
+        Serial.print("brightness: ");
+        Serial.println(i);
+        delay(100); }
+        delay(1000);
+  }
+  
+  // TASK - 3 : DIWALI LIGHTS 
+  for ( int i=0;i<=3;i++){
+    Serial.println("Diwali lights");
+      for (int i = 0; i < 4; i++) {
+        digitalWrite(diwaliLightPins[i], HIGH); // Turn on current bulb
+        delay(500); // Delay 0.5 second
+      }
+      
+      // Turn off bulbs in sequence
+      for (int i = 0; i < 4; i++) {
+        digitalWrite(diwaliLightPins[i], LOW); // Turn off current bulb
+        delay(500); 
+      }
+  }
+
+  //task-4 : ir sensor 
+  for (int i=0;i<10;i++){
+    // run for 10 seconds 
+    int a=digitalRead(ir);
+    if (a==1){
+      Serial.println("object found:jaldi vaha se hato");
+    }
+    else{
+      Serial.println("nothin out there mate");
+    }
+    delay(1000);
+  }
+
+}
