@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Omni-Drive Bot</title>
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        font-family: Arial, sans-serif;
+      }
+      .top-bar {
+        height: 100px;
+        background-color: #333;
+        color: white;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px;
+      }
+      .logo1 {
+        width: 100px;
+        height: 100px;
+      }
+      .logo2 {
+        height: 80px;
+        width: 200px;
+      }
+      .title {
+        color: #f7f7f7;
+        align-content: center;
+        justify-content: center;
+        height: match-parent;
+        font-family: Verdana, Tahoma, sans-serif;
+        font-size: 30px;
+      }
+      .second-bar {
+        background-color: #666;
+        display: flex;
+        justify-content: center;
+        margin-top: 10px;
+        padding: 5px;
+        height: 35px;
+      }
+      .button {
+        flex: 1;
+        margin: 0 10px;
+        font-size: 25px;
+        background-color: #555;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+      .Intro {
+        padding-left: 50px;
+        margin-top: 100px;
+      }
+      .text {
+        font-size: large;
+        margin-right: 700px;
+        padding-left: 50px;
+        text-align: left;
+        flex: 1;
+        padding-left: 50px;
+        align-items: center;
+        font-family: Verdana, Tahoma, sans-serif;
+      }
+      .bot {
+        height: 300px;
+        width: 300px;
+        align-self: relative left;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="top-bar">
+      <img src="svnitlogo.jpeg" alt="Logo 1" class="logo1" />
+      <div class="title">
+        <h1>OMNI WEB BOT</h1>
+      </div>
+      <img src="drishtilogo.png" alt="Logo 2" class="logo2" />
+    </div>
+
+    <div class="second-bar">
+      <button class="button" onclick="window.location.href='index.html'">
+        HOME
+      </button>
+      <button class="button" onclick="window.location.href='control.html'">
+        CONTROL
+      </button>
+      <button class="button" onclick="window.location.href='team.html'">
+        ABOUT US
+      </button>
+    </div>
+    <div class="intruducing">
+      <h1 class="Intro">Introudction</h1>
+    </div>
+    <div class="text">
+      &ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;An
+      omni-drive or holonomic drive, is a type of robotic or mechanical system
+      that allows movement in any direction without the need to change the
+      orientation of the device. This means the device can move forward,
+      backward, sideways, and even rotate while maintaining its original
+      orientation. One of the interesting applications of omni-drives is in
+      web-controlled systems, where users can control the movement of the device
+      through a web interface. Web-controlled omni-drives are commonly used in
+      various fields, including robotics, industrial automation, entertainment,
+      and education. These systems often consist of a platform or vehicle
+      equipped with omni-directional wheels or mecanum wheels, along with
+      sensors, controllers, and a connection to the internet. The components
+      involved in it are: ESP32, L293D (Motor driver), mecanum wheels, A EESP32
+      onboard the device processes the sensor data and generates control signals
+      for the omni-directional wheels. It calculates the necessary wheel speeds
+      and directions to achieve the desired movement. A web interface is created
+      to allow users to control the device remotely. It can be accessed through
+      a web browser on a computer. Users can send commands to the device,
+      specifying the desired direction and speed of movement.
+      <img src="" alt="bot" class="bot" ; />
+    </div>
+  </body>
+</html>
