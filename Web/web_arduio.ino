@@ -5,7 +5,7 @@
 #include "controlpage.h"
 #include "devpage.h"
 #include <ESPAsyncWebServer.h>
-#include <SPIFFS.h>
+//#include <SPIFFS.h>
 #include<ArduinoJson.h>
 #include <EasyTransfer.h>
 //#include <Ps3Controller.h>
@@ -20,9 +20,10 @@ struct SEND_DATA_STRUCTURE{
   //THIS MUST BE EXACTLY THE SAME ON THE OTHER ARDUINO
   int16_t rx;
   int16_t ry;
-  int16_t bt_left;
-  int16_t bt_right;
-
+  int16_t l1;
+  int16_t r1;
+  int16_t l2;
+  int16_t r2;
 };
 
 SEND_DATA_STRUCTURE mydata;
@@ -51,9 +52,9 @@ void webSocketEvent(uint8_t num, WStype_t type, uint8_t * payload, size_t length
       }
       break;
     case WStype_TEXT:
-      Serial.printf("[%u] get Text: %s\n", num, payload);
-      String message = String((char*)( payload));
-      Serial.println(message);
+//      Serial.printf("[%u] get Text: %s\n", num, payload);
+//      String message = String((char*)( payload));
+//      Serial.println(message);
 
        // Parse the JSON data
         DynamicJsonDocument jsonDocument(512);
@@ -65,37 +66,31 @@ void webSocketEvent(uint8_t num, WStype_t type, uint8_t * payload, size_t length
         {
           int16_t rx;
           int16_t ry;
-          int16_t bt_left;
-          int16_t bt_right;
+
+          rx=jsonDocument["x"];
+          ry=jsonDocument["y"];
           
           mydata.rx = rx;
           mydata.ry = ry;
-          mydata.bt_left=bt_left;
-          mydata.bt_right=bt_right;
           
-          rx=jsonDocument["x"];
-          ry=jsonDocument["y"];
+
         
           Serial.print("Joystick X: ");
-          Serial.println(rx);
+          Serial.println(mydata.rx);
           Serial.print("Joystick Y: ");
-          Serial.println(ry);
+          Serial.println(mydata.ry);
 
           ET.sendData();  
           delay(20);
         }
-
-        
-        // Use joystickX and joystickY in your Arduino code
-       
   }
 }
 
 void setup(void)
 {
    
-  Serial.begin(9600);
-  esptodue.begin(9600, SERIAL_8N1,3,1);
+  Serial.begin(115200);
+  esptodue.begin(115200, SERIAL_8N1,3,1);
   //start the library, pass in the data details and the name of the serial port. Can be Serial, Serial1, Serial2, etc.
   ET.begin(details(mydata), &esptodue);
   // Ps3.attach(notify);
@@ -107,10 +102,6 @@ void setup(void)
   Serial.println("softap");
   Serial.println("");
   Serial.println(WiFi.softAPIP());
-
-//  WiFi.mode(WIFI_STA);
-//  WiFi.begin("On","dslg5034");
-//  Serial.println(WiFi.localIP());
 
 
   if (MDNS.begin("ESP")) { //esp.local/
@@ -167,7 +158,4 @@ void setup(void)
 void loop()
 {
  websockets.loop();
-  
-// send the data 
-  
 }
