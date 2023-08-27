@@ -279,8 +279,7 @@ const char controlpage[] PROGMEM = R"=====(
 
         document.addEventListener('mouseup', (e) => {
             isJoystickPressed = false;
-            normX = 0;
-            normY = 0;
+            updateJoystick(e);
             handle.style.transform = 'translate(-50%, -50%)';
             console.log("Normalized X:", normX);
             console.log("Normalized Y:", normY);
@@ -289,8 +288,7 @@ const char controlpage[] PROGMEM = R"=====(
         joystick.addEventListener('touchend', (e) => {
             e.preventDefault();
             isJoystickPressed = false;
-            normX = 0;
-            normY = 0;
+            updateJoystick(e);
             handle.style.transform = 'translate(-50%, -50%)';
             console.log("Normalized X:", normX);
             console.log("Normalized Y:", normY);
@@ -320,6 +318,12 @@ const char controlpage[] PROGMEM = R"=====(
             normX=normX*128;
             normY=normY*128;
 
+            if(!isJoystickPressed)
+                {
+                    normX=0;
+                    normY=0;
+                }
+
             // Use normX and normY for your application
             console.log("Normalized X:", normX);
             console.log("Normalized Y:", normY);
@@ -328,7 +332,7 @@ const char controlpage[] PROGMEM = R"=====(
 
             const joystickData = {
                 x:normX,
-                y:normY,
+                y:-normY,
                 state: isActive
               };
               websockets.send(JSON.stringify(joystickData));
